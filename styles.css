@@ -2,31 +2,22 @@
 
 .header {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2em;
 }
 .logo {
   width: 15rem;
 }
-
-.lists {
-  text-align: center;
+.search {
+  padding-top: 1em;
+  padding-bottom: 5em;
 }
-
-.list {
-  width: 50%;
-  margin: auto;
-}
-
-th {
-  padding: 1em;
-  border-bottom: 1px solid black;
-}
-tr {
-}
-td {
-  padding: 1em;
-}
-.family,
-.title {
-  border-left: 1px solid black;
-  border-right: 1px solid black;
+.searchBar {
+  width: 20em;
+  padding: 0.5em;
+  font-size: 1em;
+  outline: none;
+  border-radius: 15px;
+  border: lightgray 2px solid;
 }
