@@ -1,23 +1,62 @@
 @import "reset.css";
 
+.container {
+  align-items: center;
+  text-align: center;
+}
 .header {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -70%);
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2em;
 }
 .logo {
-  width: 15rem;
+  width: 16rem;
 }
 .search {
-  padding-top: 1em;
-  padding-bottom: 5em;
+  padding-top: 1.5em;
 }
 .searchBar {
-  width: 20em;
+  width: 30em;
   padding: 0.5em;
   font-size: 1em;
   outline: none;
   border-radius: 15px;
   border: lightgray 2px solid;
+}
+.searchBtn {
+  border: none;
+  border-radius: 15px;
+  padding: 0.5em;
+  font-size: 1em;
+}
+
+.showBtn,
+.flowerBtn,
+.treeBtn {
+  border-radius: 50%;
+  border: none;
+  background: rgb(240, 239, 239);
+  font-size: 1.8em;
+  margin: 1em;
+}
+
+.list {
+  padding: 1em;
+  position: absolute;
+  overflow: auto;
+  width: 25%;
+  height: 30%;
+  left: 37%;
+  top: 60%;
+}
+.list::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera*/
+}
+
+.list p {
+  padding: 0.5em;
 }

@@ -592,6 +592,20 @@ const plants = [
     type: "",
     eng: "Buxus spp.",
   },
+  {
+    id: 77,
+    sort: "🌳",
+    name: "은행",
+    type: "섭취 시 문제",
+    eng: "maidenhair tree, ginkgo",
+  },
+  {
+    id: 78,
+    sort: "🌼",
+    name: "샤프란",
+    type: "섭취 시 문제",
+    eng: "crocus",
+  },
 ];
 
 const list = document.querySelector(".list");
@@ -604,32 +618,25 @@ const treeBtn = document.querySelector(".treeBtn");
 function showList(v) {
   list.innerHTML = "";
   const res = plants.forEach((plant) => {
+    const li = document.createElement("li");
+    li.setAttribute("class", "element");
     if (plant.name.includes(v)) {
-      const li = document.createElement("li");
       li.innerHTML = `
-      <p>${plant.sort}</p>
-      <p>이름:${plant.name}</p>
-      <p>과/특징: ${plant.type}</p>
-      <p>영문:${plant.eng}</p>
+      <p class="name">${plant.name}</p>
+      <p class="type">${plant.type}</p>
+      <p class="eng">${plant.eng}</p>
+      <p>-</p>
       `;
-      list.appendChild(li);
-    }
-  });
-}
-
-function sort(v) {
-  list.innerHTML = "";
-  const res = plants.forEach((plant) => {
-    if (plant.sort === v) {
-      const li = document.createElement("li");
+    } else if (plant.sort === v) {
       li.innerHTML = `
-      <p>${plant.sort}</p>
-      <p>이름:${plant.name}</p>
-      <p>과/특징: ${plant.type}</p>
-      <p>영문:${plant.eng}</p>
-      `;
-      list.appendChild(li);
+        <p class="sort">${plant.sort}</p>
+        <p class="name">${plant.name}</p>
+        <p class="type">${plant.type}</p>
+        <p class="eng">${plant.eng}</p>
+        <p>-</p>
+        `;
     }
+    list.appendChild(li);
   });
 }
 
@@ -638,22 +645,25 @@ showBtn.addEventListener("click", (event) => {
   showList("");
 });
 
-searchBtn.addEventListener("click", (event) => {
-  event.preventDefault();
-  const v = searchBar.value;
-  if (v === "") {
-    alert("검색어를 입력하세요");
-    list.innerHTML = "";
-  } else {
-    showList(v);
+searchBar.addEventListener("keypress", (key) => {
+  if (key.key == "Enter") {
+    const v = searchBar.value;
+    if (v === "") {
+      alert("검색어를 입력하세요");
+      list.innerHTML = "";
+    } else {
+      showList(v);
+      searchBar.value = null;
+    }
   }
 });
 
 flowerBtn.addEventListener("click", (event) => {
   event.preventDefault();
-  sort(event.target.innerHTML);
+  showList(event.target.innerHTML);
+  console.log(event);
 });
 treeBtn.addEventListener("click", (event) => {
   event.preventDefault();
-  sort(event.target.innerHTML);
+  showList(event.target.innerHTML);
 });
